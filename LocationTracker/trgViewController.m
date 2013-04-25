@@ -23,14 +23,15 @@
 	
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    [self.locationManager startUpdatingLocation];
+    [self.locationManager startMonitoringSignificantLocationChanges];
     [self.locationManager setDistanceFilter:1000];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    if(![self.locationManager locationServicesEnabled]) {
+   if(![self.locationManager locationServicesEnabled]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enable Location Services?" message:@"This app only works with location services enabled." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         // optional - add more buttons:
         [alert addButtonWithTitle:@"Settings"];
         [alert show];
+  
     }
 }
 
